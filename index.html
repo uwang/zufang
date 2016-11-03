@@ -17,7 +17,7 @@
         top: 30px;
         right: 20px;
     }
-    
+
     .control-entry {
         width: 280px;
         background-color: rgba(119, 136, 153, 0.8);
@@ -28,20 +28,20 @@
         padding: 10px;
         margin-bottom: 10px;
     }
-    
+
     .control-input {
         margin-left: 120px;
     }
-    
+
     .control-input input[type="text"] {
         width: 160px;
     }
-    
+
     .control-panel label {
         float: left;
         width: 120px;
     }
-    
+
     #transfer-panel {
         position: absolute;
         background-color: white;
@@ -82,7 +82,7 @@
     var map = new AMap.Map("container", {
         resizeEnable: true,
         zoomEnable: true,
-        center: [116.397428, 39.90923],
+        center: [121.468524,31.224073],
         zoom: 11
     });
 
@@ -103,7 +103,7 @@
     var auto = new AMap.Autocomplete({
         input: "work-location"
     });
-    
+
     AMap.event.addListener(auto, "select", workLocationSelected);
 
 
@@ -161,7 +161,7 @@
 
     function addMarkerByAddress(address) {
         var geocoder = new AMap.Geocoder({
-            city: "北京",
+            city: "上海",
             radius: 1000
         });
         geocoder.getLocation(address, function(status, result) {
@@ -175,7 +175,7 @@
                 });
                 rentMarkerArray.push(rentMarker);
 
-                rentMarker.content = "<div>房源：<a target = '_blank' href='http://bj.58.com/pinpaigongyu/?key=" + address + "'>" + address + "</a><div>"
+                rentMarker.content = "<div>房源：<a target = '_blank' href='http://sh.58.com/pinpaigongyu/?key=" + address + "'>" + address + "</a><div>"
                 rentMarker.on('click', function(e) {
                     infoWindow.setContent(e.target.content);
                     infoWindow.open(map, e.target.getPosition());
@@ -183,7 +183,7 @@
                     amapTransfer = new AMap.Transfer({
                         map: map,
                         policy: AMap.TransferPolicy.LEAST_TIME,
-                        city: "北京市",
+                        city: "上海市",
                         panel: 'transfer-panel'
                     });
                     amapTransfer.search([{
@@ -210,7 +210,7 @@
     function loadWorkLocation() {
         delWorkLocation();
         var geocoder = new AMap.Geocoder({
-            city: "北京",
+            city: "上海",
             radius: 1000
         });
 
